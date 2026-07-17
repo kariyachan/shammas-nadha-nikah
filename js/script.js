@@ -15,27 +15,52 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ================================================
-       LOADER
+       ELEMENTS
     ================================================= */
 
     const loader = document.getElementById("loader");
+    const openBtn = document.getElementById("openInvitation");
 
-    window.addEventListener("load", () => {
+    const music = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
 
-        setTimeout(() => {
+    const nav = document.querySelector("nav");
 
-            loader.style.opacity = "0";
-            loader.style.visibility = "hidden";
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
 
-        }, 1200);
+    const backTop = document.getElementById("backToTop");
+
+    let playing = false;
+
+    /* ================================================
+       OPEN INVITATION
+    ================================================= */
+
+    openBtn.addEventListener("click", async () => {
+
+        try {
+
+            await music.play();
+
+            playing = true;
+
+            musicBtn.innerHTML =
+                '<i class="fa-solid fa-pause"></i>';
+
+        } catch (err) {
+
+            console.log("Music blocked:", err);
+
+        }
+
+        loader.classList.add("hide");
 
     });
 
     /* ================================================
        COUNTDOWN
     ================================================= */
-
-    // Change your Nikah date here
 
     const weddingDate = new Date(
         "December 20, 2026 10:00:00"
@@ -49,18 +74,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (distance <= 0) {
 
-            document.getElementById("days").innerHTML = "00";
-            document.getElementById("hours").innerHTML = "00";
-            document.getElementById("minutes").innerHTML = "00";
-            document.getElementById("seconds").innerHTML = "00";
+            ["days", "hours", "minutes", "seconds"]
+                .forEach(id => {
+
+                    document.getElementById(id).textContent = "00";
+
+                });
 
             return;
 
         }
 
-        const days = Math.floor(
-            distance / (1000 * 60 * 60 * 24)
-        );
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 
         const hours = Math.floor(
             (distance % (1000 * 60 * 60 * 24))
@@ -78,9 +103,15 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         document.getElementById("days").textContent = days;
-        document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-        document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-        document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+
+        document.getElementById("hours").textContent =
+            String(hours).padStart(2, "0");
+
+        document.getElementById("minutes").textContent =
+            String(minutes).padStart(2, "0");
+
+        document.getElementById("seconds").textContent =
+            String(seconds).padStart(2, "0");
 
     }
 
@@ -89,10 +120,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(updateCountdown, 1000);
 
     /* ================================================
-       NAVBAR
+       NAVBAR SCROLL
     ================================================= */
-
-    const nav = document.querySelector("nav");
 
     window.addEventListener("scroll", () => {
 
@@ -103,6 +132,16 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
 
             nav.classList.remove("scrolled");
+
+        }
+
+        if (window.scrollY > 500) {
+
+            backTop.style.display = "flex";
+
+        } else {
+
+            backTop.style.display = "none";
 
         }
 
@@ -118,9 +157,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             e.preventDefault();
 
-            const target = document.querySelector(
-                link.getAttribute("href")
-            );
+            const target =
+                document.querySelector(link.getAttribute("href"));
 
             if (target) {
 
@@ -149,9 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         sections.forEach(section => {
 
-            const top = section.offsetTop - 140;
-
-            if (window.scrollY >= top) {
+            if (window.scrollY >= section.offsetTop - 150) {
 
                 current = section.id;
 
@@ -174,34 +210,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ================================================
-       MUSIC PLAYER
+       MUSIC BUTTON
     ================================================= */
 
-    const music = document.getElementById("bgMusic");
-
-    const musicBtn = document.getElementById("musicBtn");
-
-    let playing = false;
-
-    musicBtn.addEventListener("click", () => {
+    musicBtn.addEventListener("click", async () => {
 
         if (!playing) {
 
-            music.play();
+            try {
 
-            musicBtn.innerHTML =
-                '<i class="fa-solid fa-pause"></i>';
+                await music.play();
 
-            playing = true;
+                playing = true;
+
+                musicBtn.innerHTML =
+                    '<i class="fa-solid fa-pause"></i>';
+
+            } catch (err) {
+
+                console.log(err);
+
+            }
 
         } else {
 
             music.pause();
 
+            playing = false;
+
             musicBtn.innerHTML =
                 '<i class="fa-solid fa-volume-high"></i>';
-
-            playing = false;
 
         }
 
@@ -218,10 +256,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         whatsappBtn.addEventListener("click", () => {
 
-            const phone = "919876543210";
+            const phone = "919544431130";
 
             const message =
-
                 `Assalamu Alaikum,
 
 We are delighted to attend the Nikah of Shammas & Nadha.
@@ -235,11 +272,8 @@ May Allah bless your marriage with happiness, mercy and barakah.
 JazakAllah Khair.`;
 
             window.open(
-
                 `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
-
                 "_blank"
-
             );
 
         });
@@ -274,17 +308,13 @@ JazakAllah Khair.`;
 
     });
 
-    if (closeBtn) {
+    closeBtn?.addEventListener("click", () => {
 
-        closeBtn.addEventListener("click", () => {
+        lightbox.classList.remove("active");
 
-            lightbox.classList.remove("active");
+    });
 
-        });
-
-    }
-
-    lightbox.addEventListener("click", e => {
+    lightbox?.addEventListener("click", e => {
 
         if (e.target === lightbox) {
 
@@ -298,24 +328,7 @@ JazakAllah Khair.`;
        BACK TO TOP
     ================================================= */
 
-    const backTop =
-        document.getElementById("backToTop");
-
-    window.addEventListener("scroll", () => {
-
-        if (window.scrollY > 500) {
-
-            backTop.style.display = "flex";
-
-        } else {
-
-            backTop.style.display = "none";
-
-        }
-
-    });
-
-    backTop.addEventListener("click", () => {
+    backTop?.addEventListener("click", () => {
 
         window.scrollTo({
 
@@ -327,42 +340,38 @@ JazakAllah Khair.`;
 
     });
 
-});
+    /* ================================================
+       MOBILE MENU
+    ================================================= */
 
-/* ==========================================
-   MOBILE MENU
-========================================== */
+    menuToggle?.addEventListener("click", () => {
 
-const menuToggle = document.getElementById("menuToggle");
+        navMenu.classList.toggle("active");
 
-const navMenu = document.getElementById("navMenu");
+        if (navMenu.classList.contains("active")) {
 
-menuToggle.addEventListener("click", () => {
+            menuToggle.innerHTML =
+                '<i class="fa-solid fa-xmark"></i>';
 
-    navMenu.classList.toggle("active");
+        } else {
 
-    if (navMenu.classList.contains("active")) {
+            menuToggle.innerHTML =
+                '<i class="fa-solid fa-bars"></i>';
 
-        menuToggle.innerHTML =
-            '<i class="fa-solid fa-xmark"></i>';
+        }
 
-    } else {
+    });
 
-        menuToggle.innerHTML =
-            '<i class="fa-solid fa-bars"></i>';
+    document.querySelectorAll("#navMenu a").forEach(link => {
 
-    }
+        link.addEventListener("click", () => {
 
-});
+            navMenu.classList.remove("active");
 
-document.querySelectorAll("#navMenu a").forEach(link => {
+            menuToggle.innerHTML =
+                '<i class="fa-solid fa-bars"></i>';
 
-    link.addEventListener("click", () => {
-
-        navMenu.classList.remove("active");
-
-        menuToggle.innerHTML =
-            '<i class="fa-solid fa-bars"></i>';
+        });
 
     });
 
