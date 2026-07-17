@@ -2755,3 +2755,101 @@ footer small {
     }
 
 }
+
+/* ===========================================
+   GALLERY CAROUSEL
+=========================================== */
+
+#gallery {
+
+    background: #fff;
+}
+
+.gallerySwiper {
+
+    max-width: 1300px;
+    margin: auto;
+    padding: 20px 10px 70px;
+
+}
+
+.gallery-card {
+
+    overflow: hidden;
+    border-radius: 24px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .12);
+
+    transition: .4s;
+
+    background: #fff;
+
+}
+
+.gallery-card:hover {
+
+    transform: translateY(-8px);
+
+}
+
+.gallery-card img {
+
+    width: 100%;
+    height: 420px;
+
+    object-fit: cover;
+
+    transition: .5s;
+
+}
+
+.gallery-card:hover img {
+
+    transform: scale(1.08);
+
+}
+
+/* Pagination */
+
+.swiper-pagination-bullet {
+
+    width: 10px;
+    height: 10px;
+
+    background: #C8A96A;
+
+    opacity: .5;
+
+}
+
+.swiper-pagination-bullet-active {
+
+    opacity: 1;
+
+}
+
+/* Arrows */
+
+.swiper-button-next,
+.swiper-button-prev {
+
+    color: #0F5C4D;
+
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+
+    font-size: 26px;
+
+}
+
+@media(max-width:768px) {
+
+    .gallery-card img {
+
+        height: 300px;
+
+    }
+
+}

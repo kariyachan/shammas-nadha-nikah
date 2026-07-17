@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ================================================= */
 
     const weddingDate = new Date(
-        "December 20, 2026 10:00:00"
+        "September 12, 2026 16:00:00"
     ).getTime();
 
     function updateCountdown() {
@@ -258,18 +258,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const phone = "919544431130";
 
-            const message =
-                `Assalamu Alaikum,
+            const message = `Hello!
 
-We are delighted to attend the Nikah of Shammas & Nadha.
+            Thank you for inviting us to celebrate the special occasion of Shammas & Nadha's Nikah.
 
-Guest Name:
+            We are pleased to confirm our attendance.
 
-Number of Guests:
+            Guest Name:
 
-May Allah bless your marriage with happiness, mercy and barakah.
+            Number of Guests:
 
-JazakAllah Khair.`;
+            Looking forward to celebrating this joyful day with you. Wishing the couple a lifetime of love, happiness, and togetherness.
+
+            Best Wishes!`;
 
             window.open(
                 `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
@@ -374,5 +375,95 @@ JazakAllah Khair.`;
         });
 
     });
+
+    const gallerySwiper = new Swiper(".gallerySwiper", {
+
+        loop: true,
+
+        centeredSlides: true,
+
+        spaceBetween: 25,
+
+        autoplay: {
+
+            delay: 2500,
+
+            disableOnInteraction: false,
+
+        },
+
+        pagination: {
+
+            el: ".swiper-pagination",
+
+            clickable: true,
+
+        },
+
+        navigation: {
+
+            nextEl: ".swiper-button-next",
+
+            prevEl: ".swiper-button-prev",
+
+        },
+
+        breakpoints: {
+
+            0: {
+
+                slidesPerView: 1,
+
+            },
+
+            768: {
+
+                slidesPerView: 2,
+
+            },
+
+            1200: {
+
+                slidesPerView: 3,
+
+            }
+
+        }
+
+    });
+
+
+    /* ================================================
+   SEND BLESSINGS
+================================================ */
+
+    const sendWishBtn = document.getElementById("sendWishBtn");
+
+    if (sendWishBtn) {
+
+        sendWishBtn.addEventListener("click", () => {
+
+            const phone = "919544431130"; // Replace with your WhatsApp number
+
+            const wish = document.getElementById("wishMessage").value.trim();
+
+            if (!wish) {
+
+                alert("Please write your blessings first.");
+
+                return;
+
+            }
+
+            const message = `${wish}`;
+
+            window.open(
+                `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+                "_blank"
+            );
+
+        });
+
+    }
 
 });
