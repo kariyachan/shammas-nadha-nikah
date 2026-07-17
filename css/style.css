@@ -255,11 +255,13 @@ body {
     justify-content: center;
     align-items: center;
 
-    margin-bottom: 35px;
+    margin-bottom: 20px;
 
     backdrop-filter: blur(20px);
 
     box-shadow: 0 10px 35px rgba(0, 0, 0, .2);
+
+    background-color: antiquewhite;
 
 }
 
@@ -281,7 +283,7 @@ body {
 
     font-size: 24px;
 
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
 }
 
@@ -291,11 +293,11 @@ body {
 
     font-family: 'Cormorant Garamond', serif;
 
-    font-size: 86px;
+    font-size: 75px;
 
     line-height: 1.1;
 
-    margin-bottom: 18px;
+    margin-bottom: 10px;
 
 }
 
@@ -331,7 +333,7 @@ body {
 
     opacity: .95;
 
-    margin-bottom: 18px;
+    margin-bottom: 10px;
 
 }
 
@@ -531,7 +533,6 @@ body {
 }
 
 .open-btn {
-    margin-top: 20px;
     padding: 18px 48px;
     border: none;
     border-radius: 60px;
@@ -2736,12 +2737,6 @@ footer small {
         font-size: 24px;
 
         margin-bottom: 20px;
-
-    }
-
-    .loader-content {
-
-        max-width: 320px;
 
     }
 
