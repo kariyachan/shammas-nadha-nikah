@@ -30,6 +30,22 @@
 
 }
 
+html,
+body {
+
+    width: 100%;
+    overflow-x: hidden;
+
+}
+
+*,
+*::before,
+*::after {
+
+    box-sizing: border-box;
+
+}
+
 /* =====================================================
    RESET
 ===================================================== */
@@ -279,9 +295,13 @@ nav {
 
     left: 0;
 
-    width: 100%;
+    right: 0;
 
-    padding: 22px 8%;
+    width: auto;
+
+    box-sizing: border-box;
+
+    padding: 18px 30px;
 
     display: flex;
 
@@ -289,15 +309,11 @@ nav {
 
     align-items: center;
 
-    background: rgba(250, 247, 242, .88);
+    background: rgba(250, 247, 242, .9);
 
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(20px);
 
     z-index: 999;
-
-    transition: .4s;
-
-    border-bottom: 1px solid rgba(255, 255, 255, .25);
 
 }
 
@@ -658,49 +674,7 @@ nav ul a:hover::after {
 
 }
 
-@media(max-width:768px) {
 
-    nav {
-
-        flex-direction: column;
-
-        gap: 18px;
-
-    }
-
-    nav ul {
-
-        flex-wrap: wrap;
-
-        justify-content: center;
-
-    }
-
-    .arabic {
-
-        font-size: 28px;
-
-    }
-
-    .hero h1 {
-
-        font-size: 54px;
-
-    }
-
-    .hero-text {
-
-        font-size: 18px;
-
-    }
-
-    .section-title h2 {
-
-        font-size: 42px;
-
-    }
-
-}
 
 @media(max-width:576px) {
 
@@ -1976,18 +1950,6 @@ footer small {
 
     }
 
-    /* NAVBAR */
-
-    nav {
-
-        padding: 15px 20px;
-
-        flex-direction: column;
-
-        gap: 15px;
-
-    }
-
     nav ul {
 
         flex-wrap: wrap;
@@ -2442,10 +2404,6 @@ footer small {
 
         color: var(--primary);
 
-    }
-
-    .hero-content {
-        margin-top: 110px;
     }
 
 }
