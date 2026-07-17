@@ -313,7 +313,7 @@ nav.scrolled {
 
     font-family: 'Cormorant Garamond', serif;
 
-    font-size: 34px;
+    font-size: 10px;
 
     font-weight: 700;
 
@@ -1933,12 +1933,6 @@ footer small {
     }
 
     .event-card {
-
-        padding: 35px;
-
-    }
-
-    .family-card {
 
         padding: 35px;
 
