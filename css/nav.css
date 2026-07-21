@@ -373,9 +373,9 @@
 
     border: none;
 
-    background: var(--primary);
+    background: none;
 
-    color: white;
+    color: #084731;
 
     cursor: pointer;
 
