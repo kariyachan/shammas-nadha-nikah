@@ -39,6 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     openBtn.addEventListener("click", async () => {
 
+        // Scroll to the top
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "instant" // or "smooth"
+        });
+
         try {
 
             await music.play();
