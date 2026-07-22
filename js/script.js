@@ -171,7 +171,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 target.scrollIntoView({
 
-                    behavior: "smooth"
+                    behavior: "smooth",
+                    block: "center",
+                    inline: "nearest"
 
                 });
 
