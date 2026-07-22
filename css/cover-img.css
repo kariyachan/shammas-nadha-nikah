@@ -1,0 +1,306 @@
+#couple {
+    padding: 80px 20px;
+    background: #faf8f5;
+}
+
+.couple-banner {
+
+    position: relative;
+
+    width: min(1100px, 100%);
+    margin: auto;
+
+    aspect-ratio: 16/9;
+
+    border-radius: 28px;
+    overflow: hidden;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .18);
+}
+
+.couple-banner img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    animation: zoomImage 8s ease forwards;
+}
+
+.overlay {
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(rgba(0, 0, 0, .15),
+            rgba(0, 0, 0, .35),
+            rgba(0, 0, 0, .65));
+}
+
+.couple-content {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 90%;
+
+    text-align: center;
+    color: white;
+}
+
+.couple-name {
+
+    margin: 0;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(2rem, 6vw, 5rem);
+
+    letter-spacing: 2px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .35rem;
+}
+
+.groom {
+
+    opacity: 0;
+}
+
+.ampersand {
+
+    color: #ffd26a;
+
+    opacity: 0;
+}
+
+.bride {
+
+    opacity: 0;
+}
+
+.line {
+
+    width: clamp(80px, 12vw, 150px);
+
+    height: 2px;
+
+    background: #ffd26a;
+
+    margin: 22px auto;
+
+    transform: scaleX(0);
+}
+
+.role {
+
+    margin: 0;
+
+    font-size: clamp(.9rem, 2vw, 1.3rem);
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+}
+
+.animate-couple.active .groom {
+    animation: slideLeft 1s forwards;
+}
+
+.animate-couple.active .bride {
+    animation: slideRight 1s .25s forwards;
+}
+
+.animate-couple.active .ampersand {
+    animation: pop .8s .5s forwards;
+}
+
+.animate-couple.active .line {
+    animation: grow .8s 1s forwards;
+}
+
+.animate-couple.active .role {
+    animation: fadeUp 1s 1.3s forwards;
+}
+
+.animate-couple.active img {
+    animation: zoomImage 8s forwards;
+}
+
+/* Animations */
+
+@keyframes slideLeft {
+
+    from {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+@keyframes slideRight {
+
+    from {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+@keyframes pop {
+
+    0% {
+        opacity: 0;
+        transform: scale(.2);
+    }
+
+    70% {
+        opacity: 1;
+        transform: scale(1.35);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+@keyframes grow {
+
+    to {
+        transform: scaleX(1);
+    }
+
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes zoomImage {
+
+    from {
+        transform: scale(1.08);
+    }
+
+    to {
+        transform: scale(1);
+    }
+
+}
+
+@media (max-width:768px) {
+
+    #couple {
+        padding: 60px 15px;
+    }
+
+    .couple-banner {
+
+        height: 500px;
+        aspect-ratio: auto;
+        border-radius: 24px;
+    }
+
+    .couple-content {
+
+        top: 58%;
+        transform: translate(-50%, -50%);
+    }
+
+    .couple-name {
+
+        flex-direction: column;
+        gap: 6px;
+
+        line-height: 1.15;
+    }
+
+    .ampersand {
+
+        font-size: 1.5rem;
+    }
+
+    .role {
+
+        font-size: .85rem;
+        letter-spacing: 2px;
+        line-height: 1.7;
+    }
+
+    .line {
+
+        margin: 18px auto;
+    }
+
+}
+
+@media (max-width:480px) {
+
+    .couple-banner {
+
+        aspect-ratio: 3/4;
+    }
+
+    .couple-name {
+
+        font-size: 2rem;
+    }
+
+    .role {
+
+        font-size: .75rem;
+        letter-spacing: 1.5px;
+    }
+
+}
+
+.animate-couple img,
+.animate-couple .groom,
+.animate-couple .ampersand,
+.animate-couple .bride,
+.animate-couple .line,
+.animate-couple .role {
+    animation-play-state: paused;
+}
+
+.animate-couple.active img,
+.animate-couple.active .groom,
+.animate-couple.active .ampersand,
+.animate-couple.active .bride,
+.animate-couple.active .line,
+.animate-couple.active .role {
+    animation-play-state: running;
+}

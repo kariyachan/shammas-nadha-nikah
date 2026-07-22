@@ -14,7 +14,7 @@
     padding:160px 8% 140px;
     background:
     linear-gradient(to bottom,rgba(251,247,240,.82),rgba(15,92,77,.25)),
-    url("../assets/images/hero.jpg") center/cover no-repeat;
+    url("../assets/images/hero1.jpg") center/cover no-repeat;
 }
 
 .hero::after{
@@ -119,7 +119,7 @@
     margin-bottom:32px;
 }
 
-.hero-title .ampersand{
+.hero-title .hero-ampersand{
     color:#c8a96a;
     margin:0 18px;
 }

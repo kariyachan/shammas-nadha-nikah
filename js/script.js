@@ -473,4 +473,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    const banner = document.querySelector('.animate-couple');
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                // Restart animation
+                banner.classList.remove('active');
+
+                void banner.offsetWidth; // Force reflow
+
+                banner.classList.add('active');
+
+            } else {
+
+                banner.classList.remove('active');
+
+            }
+
+        });
+
+    }, {
+        threshold: 0.5
+    });
+
+    observer.observe(banner);
+
 });
