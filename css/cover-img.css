@@ -12,10 +12,8 @@
 
     aspect-ratio: 16/9;
 
-    border-radius: 28px;
-    overflow: hidden;
+    overflow: visible;
 
-    box-shadow: 0 20px 60px rgba(0, 0, 0, .18);
 }
 
 .couple-banner img {
@@ -26,6 +24,9 @@
     object-fit: cover;
 
     animation: zoomImage 8s ease forwards;
+
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
 }
 
 .overlay {
@@ -36,6 +37,9 @@
     background: linear-gradient(rgba(0, 0, 0, .15),
             rgba(0, 0, 0, .35),
             rgba(0, 0, 0, .65));
+
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
 }
 
 .couple-content {
@@ -231,7 +235,6 @@
 
         height: 500px;
         aspect-ratio: auto;
-        border-radius: 24px;
     }
 
     .couple-content {
